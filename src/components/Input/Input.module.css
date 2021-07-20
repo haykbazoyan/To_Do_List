@@ -1,0 +1,11 @@
+.inputStyle {
+    width: 350px;
+    color: black;
+    border: none;
+    border-bottom: 2px solid #236926;
+    padding: 5px 20px;
+    font-size: 18px;
+    margin: 4px 4px;
+    border-radius: 5px;
+    outline: none;
+  }

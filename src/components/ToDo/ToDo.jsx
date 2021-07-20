@@ -1,24 +1,34 @@
 import React from 'react';
 import Button from '../Button/Button';
-
+import Input from '../Input/Input';
 export default class ToDo extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            def: 1
+            inputValue: '',
         }
     }
 
-    handleClick = () => {
+    handleClick = (e) => {
         this.setState((lastVal) => ({
-            def: lastVal.def + 1,
+            inputValue: e.target.value
         }));
-        console.log(this.state.def)
+        console.log('value', this.state.inputValue)
+    }
+
+    setInputValue = (e) => {
+        this.setState(() => ({
+            inputValue: e.target.value
+        }));
     }
 
     render() {
         return (
-            <Button onClick={this.handleClick} isDisable="false" btnName="Add"/>
+            <div>
+                <Input value={this.state.inputValue} type="text" placeholder="Add what to Do" onChange={this.setInputValue} />
+                <Button onClick={this.handleClick} isDisable="false" btnName="Add"/>
+            </div>
+            
         );
     }  
 }
