@@ -1,0 +1,9 @@
+.listStyle ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.listStyle li{
+    display: inline;
+    /* text-align: right; */
+}
