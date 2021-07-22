@@ -3,6 +3,7 @@ import Button from '../Button/Button';
 import Input from '../Input/Input';
 import List from '../List/List';
 import styles from './ToDo.module.css';
+import ToDoItem from './ToDoItem';
 
 const idGenerator = () => {
     let id = 0;
@@ -88,25 +89,16 @@ export default class ToDo extends React.Component {
                 </div>
                 
                 <List
-                    renderItem={({ text, id, isComplete, isEdit, draft }) => {
+                    renderItem={({ ...props }) => {
                         return (
-                            <li
-                                style={{textDecoration: isComplete && "line-through"}}
-                                onClick={this.handleComplete(id)}
-                            >
-                                { isEdit ? (
-                                    <Input
-                                        onClick = {(e) => e.stopPropagation()}
-                                        onChange = {this.handleDraftChange(id)}
-                                        value = {draft}
-                                    />
-                                ) : (
-                                    <span style={{ marginRight: 20 }} >{text}</span>
-                                )
-                                }
-                                <Button btnName="Done" />
-                                <Button onClick={this.handleDelete(id)} isDisable="false" btnName="Delete" />
-                            </li>
+                            <ToDoItem
+                                key={props.id}
+                                onComplete={this.handleComplete}
+                                onDelete={this.handleDelete}
+                                onDraftChange={this.handleDraftChange}
+                                onDone={this.handleComplete} 
+                                {...props}
+                            />
                         )
                     }}
                     items = {this.state.todos}
