@@ -104,7 +104,7 @@ export default class ToDo extends React.Component {
                                     <span style={{ marginRight: 20 }} >{text}</span>
                                 )
                                 }
-                                <Button btnName="Edit" />
+                                <Button btnName="Done" />
                                 <Button onClick={this.handleDelete(id)} isDisable="false" btnName="Delete" />
                             </li>
                         )
