@@ -81,7 +81,7 @@ export default class ToDo extends React.Component {
     render() {
         return (
             <div className={`${styles.contentStyle}`}>
-                <h1>To Do List</h1>
+                <h1 className='text-4xl mb-6 text-green-900'>To Do List</h1>
                 <div>
                     <Input value={this.state.todoInput} name='todo' placeholder="Add what to Do" onChange={this.setInputValue} />
                     <Button onClick={this.handleClick} isDisable="false" btnName="Add"/>

@@ -1,5 +1,4 @@
 import React from "react";
-import styles from './Input.module.css'
 
 export default class Input extends React.Component {
     state = {
@@ -21,7 +20,7 @@ export default class Input extends React.Component {
   
       return (
         <input
-          className={styles.inputStyle}
+          className='text-gray-800 border-b-2 border-green-700 py-2.5 px-6 mb-3 mr-2 leading-tight focus:outline-none'
           type={type}
           value={typeof value === "undefined" ? stateValue : value}
           placeholder={placeholder}
