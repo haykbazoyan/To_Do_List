@@ -1,5 +1,6 @@
 import Input from "../Input/Input"
 import Button from "../Button/Button"
+import PropTypes from "prop-types"
 
 export default function ToDoItem ({
     text,
@@ -30,4 +31,11 @@ export default function ToDoItem ({
             <Button onClick={onDelete(id)} isDisable="false" btnName="Delete" />
         </li>
     )
+}
+
+ToDoItem.propTypes = {
+    text: PropTypes.string,
+    isEdit: PropTypes.bool,
+    onComplete: PropTypes.func,
+    onDelete: PropTypes.func,
 }
