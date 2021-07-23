@@ -53,6 +53,25 @@ export default class ToDo extends React.Component {
                 validationMessage: ""
             }));
         }
+        
+    }
+    
+    componentDidUpdate() {
+        localStorage.setItem('key', JSON.stringify(this.state.todos));
+    }
+
+    // get localStorage doesn't work
+    getLocalTodos = () => {
+        if (localStorage.getItem('key') === null) {
+            localStorage.setItem('key', JSON.stringify([]));
+            return;
+        } else {
+            JSON.parse(localStorage.getItem('key'));
+            // this.state.todos = todoLocal
+
+            // console.log(todoLocal)
+            return;
+        }
     }
 
     handleDelete = (id) => (e) => {
