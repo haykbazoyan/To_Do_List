@@ -15,7 +15,7 @@ const idGenerator = () => {
 
 const getRandomId = idGenerator();
 
-const createNewToDo = (text = "Learn js") => {
+const createNewToDo = (text) => {
     return {
       text,
       id: getRandomId(),
@@ -28,7 +28,7 @@ export default class ToDo extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            todos: [createNewToDo()],
+            todos: localStorage.getItem('key') ? JSON.parse(localStorage.getItem('key')) : [],
             todoInput: '',
             validationMessage: '',
         }
@@ -62,16 +62,8 @@ export default class ToDo extends React.Component {
 
     // get localStorage doesn't work
     getLocalTodos = () => {
-        if (localStorage.getItem('key') === null) {
-            localStorage.setItem('key', JSON.stringify([]));
-            return;
-        } else {
-            JSON.parse(localStorage.getItem('key'));
-            // this.state.todos = todoLocal
-
-            // console.log(todoLocal)
-            return;
-        }
+       return localStorage.getItem('key') ? JSON.parse(localStorage.getItem('key')) : localStorage.setItem('key', JSON.stringify([createNewToDo]))
+        
     }
 
     handleDelete = (id) => (e) => {
@@ -110,6 +102,7 @@ export default class ToDo extends React.Component {
                 <List
                     renderItem={({ ...props }) => {
                         return (
+                            
                             <ToDoItem
                                 key={props.id}
                                 onComplete={this.handleComplete}
